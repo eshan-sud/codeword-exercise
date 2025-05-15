@@ -55,22 +55,19 @@ export default function Home() {
   return (
     <div className="bg-black text-white min-h-screen py-20 px-4">
       <div className="bg-black text-center mb-10">
-        <h1 className="text-4xl text-center font-bold mb-2">Meet Our Team</h1>
-        <p className="text-center text-lg text-gray-400">
-          Hover over a card to learn more
-        </p>
+        <h1 className="text-4xl font-bold mb-2">Meet Our Team</h1>
+        <p className="text-lg text-gray-400">Hover over a card to learn more</p>
       </div>
-
-      <Carousel className="w-full max-w-6xl mx-auto">
-        <CarouselContent className="flex-nowrap overflow-x-auto whitespace-nowrap">
+      <Carousel className="w-full max-w-6xl mx-auto overflow-hidden">
+        <CarouselContent className="flex-nowrap whitespace-nowrap mx-4 sm:mx-6">
           {teamMembers.map((member) => (
             <CarouselItem
               key={member.id}
-              className="sm:basis-1/3 flex justify-center px-4"
+              className="sm:basis-1/3 basis-full flex justify-center px-1 md:px-2"
             >
               <HoverCard>
                 <HoverCardTrigger asChild>
-                  <Card className="w-[280px] bg-zinc-900 text-white border-zinc-800 hover:shadow-2xl transition-all duration-300">
+                  <Card className="w-[90vw] max-w-[280px] md:w-[280px] bg-zinc-900 text-white border-zinc-800 hover:shadow-2xl transition-all duration-300">
                     <CardHeader className="items-center">
                       <Image
                         src={member.imageUrl}
@@ -104,8 +101,10 @@ export default function Home() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <div className="flex justify-center gap-4 mt-6 xl:hidden">
+          <CarouselPrevious className="btn px-6 py-2">Prev</CarouselPrevious>
+          <CarouselNext className="btn px-6 py-2">Next</CarouselNext>
+        </div>
       </Carousel>
     </div>
   );
